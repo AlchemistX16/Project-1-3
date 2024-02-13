@@ -1,5 +1,6 @@
 @extends('layouts.master_backend')
 @section('con')
+@inject("Carbon", "Carbon\Carbon")
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
@@ -15,8 +16,8 @@
               <th style="color:#fff;">Price</th>
               <th style="color:#fff;">Image</th>
               <th style="color:#fff;">Description</th>
-              <th style="color:#fff;">Created_at</th>
-              <th style="color:#fff;">Updated_at</th>
+              <th style="color:#fff;">Create</th>
+              <th style="color:#fff;">Update</th>
               <th style="color:#fff;">Actions</th>
               </tr>
             </thead>
@@ -31,8 +32,8 @@
                 <img src ="{{ asset('backend/product/resize/'.$pro->image) }}" alt="">
              </td>
             <td>{{ $pro->description }}</td>
-            <td>{{ $pro->created_at }}</td>
-            <td>{{ $pro->updated_at }}</td>
+            <td>{{ $Carbon->parse($pro->created_at)->thaidate('D j M y เวลา H:i') }}</td>
+            <td>{{ $Carbon->parse($pro->updated_at)->thaidate('D j M y เวลา H:i') }}</td>
             <td>
               <a href="{{ route('p.edit',$pro->product_id) }}"><i class="mdi mdi-border-color" style="color: #fff ; margin:5px"></i></a>
               <a href="{{ url('admin/product/delete/'.$pro->product_id) }}"><i class="mdi mdi-close " style="color: #fff ; margin:5px"></i></a>

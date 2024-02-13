@@ -1,5 +1,6 @@
 @extends('layouts.master_backend')
 @section('con')
+@inject("Carbon", "Carbon\Carbon")
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
@@ -19,10 +20,10 @@
             <tbody>
                 @foreach ($category as $cat)
             <tr>
-            <td>{{ $category->firstItem() +$loop->index }}</td>
+            <td>{{ $category->firstItem() + $loop->index }}</td>
             <td>{{ $cat->name }}</td>
-            <td>{{ $cat->created_at }}</td>
-            <td>{{ $cat->updated_at }}</td>
+            <td>{{ $Carbon->parse($cat->created_at)->thaidate('D j M y เวลา H:i') }}</td>
+            <td>{{ $Carbon->parse($cat->updated_at)->thaidate('D j M y เวลา H:i') }}</td>
             <td>
               <a href="{{ url('admin/category/edit/'.$cat->category_id) }}"><i class="mdi mdi-border-color" style="color: #fff ; margin:5px"></i></a>
               <a href="{{ url('admin/category/delete/'.$cat->category_id) }}"><i class="mdi mdi-close " style="color: #fff ; margin:5px"></i></a>

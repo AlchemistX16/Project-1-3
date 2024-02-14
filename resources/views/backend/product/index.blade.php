@@ -22,14 +22,37 @@
               </tr>
             </thead>
             <tbody>
-                @foreach ($product as $pro)
+                @foreach ($product as $key => $pro)
             <tr>
             <td>{{ $product->firstItem() + $loop->index }}</td>
             <td>{{ $pro->name }}</td>
             <td>{{ $pro->category->name}}</td>
             <td>{{ $pro->price }}</td>
             <td>
-                <img src ="{{ asset('backend/product/resize/'.$pro->image) }}" alt="">
+
+                {{-- <img src ="{{ asset('backend/product/resize/'.$pro->image) }}" alt=""> --}}
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#image{{ $pro->product_id }}">
+                    ดูรูป
+                </button>
+
+                <div class="modal fade" id="image{{ $pro->product_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-body">
+
+                          <div class="mb-4 text-center">
+                              <img class="img-fluid" src ="{{ asset('backend/product/resize/'.$pro->image) }}" alt="">
+                          </div>
+
+                          <div class="text-center">
+                            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+                          </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
              </td>
             <td>{{ $pro->description }}</td>
             <td>{{ $Carbon->parse($pro->created_at)->thaidate('D j M y เวลา H:i') }}</td>

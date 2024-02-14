@@ -41,7 +41,7 @@ require __DIR__.'/auth.php';
 //menu user
 Route::get('admin/user/index',[UserController::class, 'index'])->name('u.index');
 // menu product
-Route::get('admin/product/index',[ProductController::class, 'index'])->name('p.index');
+Route::get('admin/product/index',[ProductController::class, 'index'])->middleware(['auth'])->name('p.index');
 Route::get('admin/product/create',[ProductController::class, 'create'])->name('p.create');
 Route::post('admin/product/insert', [ProductController::class, 'insert'])->name('p.insert');
 Route::get('admin/product/edit/{id}',[ProductController::class, 'edit'])->name('p.edit');

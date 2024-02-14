@@ -15261,7 +15261,8 @@ a.text-dark:hover, a.text-dark:focus {
     display: table-header-group; }
   tr,
   img {
-    page-break-inside: avoid; }
+    page-break-inside: avoid; 
+  }
   p,
   h2,
   h3 {
@@ -17900,8 +17901,8 @@ div.tagsinput {
     .table th img, .jsgrid .jsgrid-table th img,
     .table td img,
     .jsgrid .jsgrid-table td img {
-      width: 30px;
-      height: 30px;
+      /* width: 30px;
+      height: 30px; */
       border-radius: 100%; }
     .table th .badge, .jsgrid .jsgrid-table th .badge,
     .table td .badge,
